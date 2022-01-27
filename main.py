@@ -86,12 +86,12 @@ def hack_score(name_game, combobox):
         except Exception:
             kill_process()
     try:
-        offsets = [0x78, 0x94, 0x100, 0x230, 0x30, 0x0, 0x5DC]
+        offsets = [0x78, 0x3C, 0x0, 0xC, 0x100, 0x0, 0x5DC]
         module = module_from_name(mem.process_handle, name_game).lpBaseOfDll
         value = int(combobox.get())
-        mem.write_int(get_pointer_address(module + 0x00130EDC, offsets), value)
+        mem.write_int(get_pointer_address(module + 0x00131878, offsets), value)
     except Exception:
-        mem.write_int(get_pointer_address(module + 0x00130EDC, offsets), 123456789)
+        mem.write_int(get_pointer_address(module + 0x00131878, offsets), 123456789)
 
 def hack_life(name_game, combobox):
     global module, offsets
